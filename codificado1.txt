@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background: #e8eef7;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,42 +17,57 @@
             margin: 0;
         }
 
-        .login {
+        .contenedor {
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 0 10px #ccc;
-        }
-
-        h2 {
+            padding: 35px;
+            border-radius: 12px;
+            width: 320px;
             text-align: center;
+            box-shadow: 0 5px 20px #0002;
         }
 
         input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
             box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
         button {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
+            margin-top: 10px;
             background: #007bff;
             color: white;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
         }
 
         button:hover {
             background: #0056b3;
         }
+
+        #bienvenida {
+            display: none;
+        }
+
+        #bienvenida h1 {
+            color: #198754;
+        }
+
+        .mensaje {
+            color: #555;
+            line-height: 1.5;
+        }
     </style>
 </head>
+
 <body>
 
-    <div class="login">
+    <div class="contenedor" id="login">
         <h2>Iniciar sesión</h2>
 
         <form onsubmit="iniciarSesion(event)">
@@ -64,6 +79,21 @@
         </form>
     </div>
 
+    <div class="contenedor" id="bienvenida">
+        <h1>¡Bienvenido!</h1>
+
+        <h2 id="nombreUsuario"></h2>
+
+        <p class="mensaje">
+            Has iniciado sesión correctamente.
+            Ahora puedes acceder al sistema.
+        </p>
+
+        <p>Tu sesión está activa.</p>
+
+        <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
+
     <script>
         function iniciarSesion(event) {
             event.preventDefault();
@@ -72,12 +102,29 @@
             let password = document.getElementById("password").value;
 
             if (usuario === "admin" && password === "1234") {
-                alert("¡Bienvenido!");
+
+                document.getElementById("login").style.display = "none";
+
+                document.getElementById("bienvenida").style.display = "block";
+
+                document.getElementById("nombreUsuario").textContent =
+                    "Hola, " + usuario;
+
             } else {
                 alert("Usuario o contraseña incorrectos");
             }
+        }
+
+        function cerrarSesion() {
+            document.getElementById("bienvenida").style.display = "none";
+
+            document.getElementById("login").style.display = "block";
+
+            document.getElementById("usuario").value = "";
+            document.getElementById("password").value = "";
         }
     </script>
 
 </body>
 </html>
+Cambio hecho en rama1
