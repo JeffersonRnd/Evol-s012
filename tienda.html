@@ -3,28 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda UPN - Version 1</title>
+    <title>Tienda UPN - Version 2</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #e8eef7;
+            background: #d6f5e3;
             margin: 0;
             padding: 30px;
         }
 
-        h1 {
-            color: #2c3e50;
+        header {
+            background: #1e8449;
+            color: white;
+            padding: 20px;
             text-align: center;
+            border-radius: 10px;
+        }
+
+        .layout {
+            display: flex;
+            gap: 20px;
+            max-width: 900px;
+            margin: 30px auto;
         }
 
         .contenedor {
             background: white;
-            max-width: 500px;
-            margin: 30px auto;
+            flex: 1;
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px #0002;
+            box-shadow: 0 5px 20px #0003;
         }
 
         ul {
@@ -34,26 +43,67 @@
 
         li {
             padding: 10px;
-            border-bottom: 1px solid #ddd;
-            color: #333;
+            border-bottom: 1px solid #c8e6d3;
+            color: #1b4d2e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        p.pie {
+        button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e8449;
+        }
+
+        button.vaciar {
+            background: #c0392b;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .total {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px;
+            color: #1e8449;
+        }
+
+        footer {
             text-align: center;
-            color: #777;
+            color: #1b4d2e;
             font-size: 13px;
         }
     </style>
 </head>
 <body>
-    <h1>Tienda UPN - VERSION 1</h1>
+    <header>
+        <h1>Tienda UPN - VERSION 2</h1>
+        <p>Ahora con carrito de compras</p>
+    </header>
 
-    <div class="contenedor">
-        <h2>Lista de productos</h2>
-        <ul id="lista"></ul>
+    <div class="layout">
+        <div class="contenedor">
+            <h2>Productos</h2>
+            <ul id="lista"></ul>
+        </div>
+
+        <div class="contenedor">
+            <h2>Carrito</h2>
+            <ul id="carrito"></ul>
+            <div class="total">Total: S/ <span id="total">0</span></div>
+            <button class="vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
+        </div>
     </div>
 
-    <p class="pie">Pagina creada en la rama2 - Semana 14</p>
+    <footer>Pagina actualizada en la rama2 - Semana 14</footer>
 
     <script src="tienda.js"></script>
 </body>
